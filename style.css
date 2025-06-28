@@ -1,0 +1,269 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: #f5f6f8;
+  color: #222;
+}
+
+header {
+  background-color: #2d3748;
+  color: #fff;
+  text-align: center;
+  padding: 40px 0;
+}
+
+nav {
+  background: #4a5568;
+  padding: 12px;
+  text-align: center;
+}
+
+nav a {
+  color: #fff;
+  margin: 0 15px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+section {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+img {
+  display: block;
+  margin: 0 auto 20px;
+  width: 150px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+  background: #f7fafc;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 5px #ddd;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+form input[type="submit"] {
+  background: #2b6cb0;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+form input[type="submit"]:hover {
+  background: #1a4e85;
+}
+
+footer {
+  text-align: center;
+  background-color: #2d3748;
+  color: white;
+  padding: 15px;
+}
+
+.card.highlight {
+  border-left: 6px solid #2b6cb0;
+  background: #edf2f7;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.card.highlight h3 {
+  color: #2b6cb0;
+}
+
+.card.highlight ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.tagline {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+#skills h3 {
+  margin-top: 30px;
+  color: #2b6cb0;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 5px;
+}
+
+#certifications .card {
+  background: #f0f4f8;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-left: 4px solid #4299e1;
+  border-radius: 8px;
+}
+
+.header-professional {
+  background: #1e293b;
+  color: #f8fafc;
+  padding: 40px 20px;
+}
+
+.header-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+  justify-content: center;
+}
+
+.profile-left {
+  flex: 1 1 200px;
+  text-align: center;
+}
+
+.profile-right {
+  flex: 2 1 500px;
+}
+
+.profile-img-large {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 4px solid #38bdf8;
+  object-fit: cover;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+
+.name {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.title {
+  font-size: 1.3rem;
+  color: #94a3b8;
+  margin: 8px 0;
+}
+
+.tech-stack {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #cbd5e1;
+}
+
+/* NEW: Progress bars for skills */
+.skill-group {
+  margin-bottom: 20px;
+}
+
+.skill-group label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: inline-block;
+  color: #2b6cb0;
+}
+
+.progress {
+  background: #e2e8f0;
+  border-radius: 6px;
+  overflow: hidden;
+  height: 16px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.bar {
+  background: #2b6cb0;
+  height: 16px;
+  width: 0;
+  transition: width 1s ease;
+}
+
+/* Resume Button */
+.resume-btn {
+  background: #38bdf8;
+  color: #0f172a;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.resume-btn:hover {
+  background: #0ea5e9;
+}
+
+.certificate-img {
+  width: 100%;
+  max-width: 600px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  margin-top: 15px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-img {
+  width: 150px;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-img-large {
+    width: 120px;
+    height: 120px;
+  }
+
+  .resume-btn {
+    width: 80%;
+    margin-top: 10px;
+  }
+
+  nav a {
+    display: block;
+    margin: 10px 0;
+  }
+
+  section {
+    padding: 20px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .bar {
+    height: 12px;
+  }
+}

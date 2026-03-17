@@ -1,183 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Srikannan J | Java Full Stack Developer</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srikannan J | Software Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
-<body>
 
-  <header class="fade-in header-professional">
-    <div class="header-container">
-      <div class="profile-left">
-        <img src="images/profile.jpg" alt="Srikannan J Profile Picture" class="profile-img-large">
-      </div>
-      <div class="profile-right">
-        <h1 class="name">Srikannan J</h1>
-        <h2 class="title">Software Developer</h2>
-        <p class="tech-stack">Java • Spring Boot • JSP • Hibernate • MySQL</p>
-        <p class="tagline">Building scalable, maintainable web applications with strong backend logic and clean code practices.</p>
-        <a href="Srikannan J_Resume.pdf" download class="resume-btn">📄 Download Resume</a>
-      </div>
-    </div>
-  </header>
+<body class="geist-font">
 
-  <nav class="navbar">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#education">Education</a>
-    <a href="#contact">Contact</a>
-    <a href="#certifications">Certifications</a>
-  </nav>
+    <div id="aurora-container"></div>
 
-  <section id="about" class="fade-in">
-    <h2>👋 About Me</h2>
-    <p>I am a passionate and motivated Java developer aiming to build scalable, real-world web applications. Skilled in backend development using Java technologies and experienced in designing user-friendly frontends using HTML, CSS, and JavaScript. I focus on writing clean code, following the MVC pattern, and continuously improving my skills to match industry trends.</p>
-  </section>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-wrapper">
+                <div class="logo-box">SJ</div>
+                <span class="logo-name">Srikannan J</span>
+            </div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#education">Education</a>
+            </div>
+            <a href="Srikannan.J_ReSuMe.pdf" download class="glass-button"
+                style="padding: 0.5rem 1rem; min-width: auto;">Resume</a>
+        </div>
+    </nav>
 
-  <section id="skills" class="fade-in">
-    <h2>🛠 Technical Proficiency</h2>
-    <p class="section-subtitle">A snapshot of my core competencies and development tools.</p>
+    <main>
+        <section id="about" class="hero">
+            <div class="hero-content float-animation">
+                <h1>
+                    Creative Developer &<br>
+                    <span class="gradient-text">Full-Stack Engineer</span>
+                </h1>
+                <p>I craft scalable, maintainable web applications with a focus on clean code and robust backend logic.
+                    Specialist in Java, Spring Boot, and modern web technologies.</p>
+                <div class="btn-group">
+                    <a href="#projects" class="primary-button">View My Work</a>
+                    <a href="#contact" class="glass-button">Get In Touch</a>
+                </div>
+            </div>
+        </section>
 
-    <h3>💻 Programming Languages & Frameworks</h3>
-    <div class="skill-group">
-      <label>Java (Core & OOP)</label>
-      <div class="progress"><div class="bar" style="width: 90%;"></div></div>
-    </div>
-    <div class="skill-group">
-      <label>Spring Boot / Spring MVC</label>
-      <div class="progress"><div class="bar" style="width: 80%;"></div></div>
-    </div>
-    <div class="skill-group">
-      <label>Hibernate / JDBC</label>
-      <div class="progress"><div class="bar" style="width: 75%;"></div></div>
-    </div>
-    <div class="skill-group">
-      <label>JSP & Servlets</label>
-      <div class="progress"><div class="bar" style="width: 85%;"></div></div>
-    </div>
+        <div class="divider mx-auto" style="margin: 0 auto;"></div>
 
-    <h3>🌐 Web Development</h3>
-    <div class="skill-group">
-      <label>HTML5 / CSS3 / JavaScript</label>
-      <div class="progress"><div class="bar" style="width: 80%;"></div></div>
-    </div>
-    <div class="skill-group">
-      <label>Responsive Design (Bootstrap)</label>
-      <div class="progress"><div class="bar" style="width: 70%;"></div></div>
-    </div>
+        <section id="projects" class="projects">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1: EduConnect -->
+                <div class="glass-card">
+                    <div class="card-icon"><i class="fas fa-graduation-cap text-green-400"></i></div>
+                    <h3>EduConnect Learning Platform</h3>
+                    <p>Full-stack educational platform with center listings, booking system, and admin dashboards for
+                        managing courses and real-time notifications.</p>
+                    <div class="tag-group">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">SQLite</span>
+                        <span class="tag">Tailwind</span>
+                    </div>
+                </div>
 
-    <h3>🧰 Tools, Databases & Technologies</h3>
-    <div class="skill-group">
-      <label>MySQL / Database Design</label>
-      <div class="progress"><div class="bar" style="width: 70%;"></div></div>
-    </div>
-    <div class="skill-group">
-      <label>Eclipse / IntelliJ / VS Code</label>
-      <div class="progress"><div class="bar" style="width: 75%;"></div></div>
-    </div>
-    <div class="skill-group">
-      <label>Git / GitHub</label>
-      <div class="progress"><div class="bar" style="width: 85%;"></div></div>
-    </div>
-    <div class="skill-group">
-      <label>Postman / REST API Testing</label>
-      <div class="progress"><div class="bar" style="width: 80%;"></div></div>
-    </div>
-  </section>
+                <!-- Project 2 -->
+                <div class="glass-card">
+                    <div class="card-icon"><i class="fas fa-spa text-blue-400"></i></div>
+                    <h3>Beauty Parlour Management</h3>
+                    <p>Full-stack system using Java 17, Spring Boot, and JWT for secure appointment scheduling and
+                        service management.</p>
+                    <div class="tag-group">
+                        <span class="tag">Spring Boot</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">JWT</span>
+                    </div>
+                </div>
 
-  <section id="certifications" class="fade-in">
-    <h2>📜 Certifications</h2>
-    <div class="card">
-      <h3>Certified Full-Stack Java Developer</h3>
-      <p><strong>Issued by:</strong> Infi Techzone, Salem</p>
-      <p><strong>Date:</strong> August 2023</p>
-      <p>Completed hands-on training covering Java, Spring Boot, JSP, Hibernate, REST APIs, and front-end development.</p>
-      <img src="images/certificate-java.jpg" alt="Full Stack Java Certification" class="certificate-img">
-    </div>
-  </section>
+                <!-- Project 3 -->
+                <div class="glass-card">
+                    <div class="card-icon"><i class="fas fa-file-invoice text-purple-400"></i></div>
+                    <h3>AI Resume Keyword Matcher</h3>
+                    <p>Modern web app for analyzing resumes vs job descriptions using AI-powered keyword extraction and
+                        glassmorphism UI.</p>
+                    <div class="tag-group">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">PDF.js</span>
+                        <span class="tag">Chart.js</span>
+                    </div>
+                </div>
 
-  <section id="projects" class="fade-in">
-    <h2>🚀 Projects</h2>
+                <!-- Project 4 (Moved to keep grid balanced) -->
+                <div class="glass-card">
+                    <div class="card-icon"><i class="fas fa-hotel text-cyan-400"></i></div>
+                    <h3>Resort Management System</h3>
+                    <p>Comprehensive system handling room bookings, availability tracking, and automated reporting for
+                        hospitality businesses.</p>
+                    <div class="tag-group">
+                        <span class="tag">Java</span>
+                        <span class="tag">JSP</span>
+                        <span class="tag">MySQL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <div class="card">
-      <h3>🏨 Resort Management System</h3>
-      <p>Built a fully functional resort management system handling room bookings, availability, and reporting.</p>
-      <ul>
-        <li>Technologies: Java, JSP, JDBC, MySQL</li>
-        <li>Role: Backend logic, data processing & report generation</li>
-      </ul>
-    </div>
+        <div class="divider mx-auto" style="margin: 0 auto;"></div>
 
-    <div class="card">
-      <h3>🧾 Bill Generation System</h3>
-      <p>Developed a web-based system using Spring Boot and Hibernate to manage online bill generation via REST APIs.</p>
-      <ul>
-        <li>Technologies: Spring Boot, Hibernate, REST API, MySQL</li>
-        <li>Role: API Development, billing logic, UI integration</li>
-      </ul>
-    </div>
+        <section id="skills" class="stats">
+            <div class="stat-item">
+                <div class="stat-value">8.0</div>
+                <div class="stat-label">M.Sc. CGPA</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">2023</div>
+                <div class="stat-label">Certified Developer</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">Java</div>
+                <div class="stat-label">Core Expertise</div>
+            </div>
+        </section>
 
-    <div class="card">
-      <h3>🎨 Reko Interior Management</h3>
-      <p>Interior project tracking system with admin module, stage-based task management, and user dashboards.</p>
-      <ul>
-        <li>Technologies: Java, Spring MVC, JSP, MySQL</li>
-        <li>Role: Backend development, database design</li>
-      </ul>
-    </div>
-  </section>
+        <div class="divider mx-auto" style="margin: 0 auto;"></div>
 
-  <section id="education" class="fade-in">
-    <h2>🎓 Education</h2>
+        <section id="education" class="projects" style="padding-top: 2rem;">
+            <h2 class="section-title" style="margin-bottom: 2rem;">Education</h2>
+            <div class="projects-grid">
+                <div class="glass-card">
+                    <h3>M.Sc. Computer Science</h3>
+                    <p>Periyar University (2025–2026)</p>
+                    <p style="font-size: 0.8rem;">Focus on advanced programming and software engineering.</p>
+                </div>
+                <div class="glass-card">
+                    <h3>B.Sc. Computer Science</h3>
+                    <p>Bharathiar University (2018–2021)</p>
+                    <p style="font-size: 0.8rem;">Strong foundation in data structures and OOP.</p>
+                </div>
+                <div class="glass-card">
+                    <h3>Full-Stack Certification</h3>
+                    <p>Infi Techzone, Salem (2023)</p>
+                    <p style="font-size: 0.8rem;">Hands-on training in Spring Boot and Hibernate.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <div class="card">
-      <h3>M.Sc. Computer Science</h3>
-      <p><strong>Institution:</strong> Sona College of Arts & Science, Salem</p>
-      <p><strong>University:</strong> Periyar University (2025–2026)</p>
-      <p><strong>Current CGPA:</strong> 7.6 (Ongoing)</p>
-      <p>Pursuing a master's degree in computer science with a focus on advanced programming, distributed systems, software engineering, and cloud computing. This program is enhancing my ability to solve complex real-world problems using modern development frameworks and best practices.</p>
-    </div>
+    <footer id="contact">
+        <p>© 2026 Srikannan J | <a href="mailto:srikannan9460@gmail.com">srikannan9460@gmail.com</a></p>
+        <a href="https://wa.me/7010217823?text=Hi%20Srikannan,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!"
+            target="_blank">
+            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+    </footer>
 
-    <div class="card">
-      <h3>B.Sc. Computer Science</h3>
-      <p><strong>Institution:</strong> CMS College of Science and Commerce, Coimbatore</p>
-      <p><strong>University:</strong> Bharathiar University (2018–2021)</p>
-      <p><strong>Final CGPA:</strong> 7.3</p>
-      <p>Acquired strong foundations in data structures, algorithms, object-oriented programming, database systems, and computer networks. Completed academic mini-projects and lab exercises that prepared me for real-time software development tasks.</p>
-    </div>
-
-    <div class="card">
-      <h3>HSS (12th Standard)</h3>
-      <p><strong>School:</strong> St. Paul’s Higher Secondary School, Salem</p>
-      <p><strong>Year of Completion:</strong> 2018</p>
-      <p><strong>Score:</strong> 61%</p>
-      <p>Chose Computer Science as my stream, where I was introduced to fundamental programming concepts, logical problem solving, and mathematics — laying the groundwork for my career in IT.</p>
-    </div>
-
-    <div class="card">
-      <h3>SSLC (10th Standard)</h3>
-      <p><strong>School:</strong> St. Paul’s High School, Salem</p>
-      <p><strong>Year of Completion:</strong> 2016</p>
-      <p><strong>Score:</strong> 85.4%</p>
-      <p>Demonstrated academic excellence and discipline at the foundational level of my schooling, which helped me build a strong academic mindset and learning habit.</p>
-    </div>
-  </section>
-
-  <div>
-
-
-  </div>
-
-
-  <footer>
-    <p>© Srikannan J | Email: srikannan9460@gmail.com<span><a  style="color: green;" href="https://wa.me/7010217823?text=Hi%20Srikannan,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!" 
-   class="whatsapp-btn" target="_blank">
-   <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-</a></span></p>
-  </footer>
-
+    <script src="script.js"></script>
 </body>
+
 </html>

@@ -1,455 +1,213 @@
-:root {
-  --background: #020617;
-  --foreground: #f8fafc;
-  --muted: #64748b;
-  --muted-foreground: #94a3b8;
-  --card: rgba(30, 41, 59, 0.5);
-  --card-foreground: #f1f5f9;
-  --border: rgba(255, 255, 255, 0.1);
-  --primary: #3b82f6;
-  --primary-foreground: #ffffff;
-  --accent: #8b5cf6;
-  --ring: #3b82f6;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  overflow-x: hidden;
-}
-
-/* Background Container */
-#aurora-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* Typography */
-.geist-font {
-  font-family: 'Outfit', sans-serif;
-  /* Fallback for Geist */
-  letter-spacing: -0.02em;
-}
-
-.gradient-text {
-  background: linear-gradient(to right, var(--primary), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Navbar */
-.navbar {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  padding: 0.75rem 1rem;
-  z-index: 50;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-}
-
-.nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.logo-box {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 0.5rem;
-  background: var(--card);
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 0.875rem;
-}
-
-.nav-links {
-  display: none;
-  gap: 2rem;
-}
-
-@media (min-width: 768px) {
-  .nav-links {
-    display: flex;
-  }
-}
-
-.nav-links a {
-  color: var(--muted-foreground);
-  text-decoration: none;
-  font-size: 0.875rem;
-  transition: color 0.2s;
-}
-
-.nav-links a:hover {
-  color: var(--foreground);
-}
-
-/* Hero Section */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 5rem 1.5rem;
-  text-align: center;
-}
-
-.hero-content h1 {
-  font-size: clamp(2rem, 8vw, 4.5rem);
-  font-weight: 300;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-}
-
-.hero-content p {
-  font-size: clamp(1.125rem, 3vw, 1.25rem);
-  color: var(--muted-foreground);
-  max-width: 40rem;
-  margin: 0 auto 2.5rem;
-  font-weight: 300;
-}
-
-/* Buttons */
-.btn-group {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: center;
-}
-
-@media (min-width: 640px) {
-  .btn-group {
-    flex-direction: row;
-    justify-content: center;
-  }
-}
-
-.primary-button {
-  background: var(--foreground);
-  color: var(--background);
-  padding: 0.75rem 2rem;
-  border-radius: 0.5rem;
-  font-weight: 500;
-  text-decoration: none;
-  transition: opacity 0.2s;
-  min-width: 160px;
-}
-
-.primary-button:hover {
-  opacity: 0.9;
-}
-
-.glass-button {
-  background: var(--card);
-  color: var(--foreground);
-  padding: 0.75rem 2rem;
-  border-radius: 0.5rem;
-  border: 1px solid var(--border);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  font-weight: 500;
-  text-decoration: none;
-  transition: background 0.2s;
-  min-width: 160px;
-}
-
-.glass-button:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-/* Projects Grid */
-.projects {
-  padding: 5rem 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  font-weight: 300;
-  margin-bottom: 3rem;
-  text-align: center;
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .projects-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.glass-card {
-  background: var(--card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border);
-  border-radius: 1.25rem;
-  padding: 1.5rem;
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.glass-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.card-icon {
-  width: 3rem;
-  height: 3rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 0.75rem;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-}
-
-.glass-card h3 {
-  font-size: 1.125rem;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-}
-
-.glass-card p {
-  font-size: 0.875rem;
-  color: var(--muted-foreground);
-  margin-bottom: 1rem;
-}
-
-.tag-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.tag {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  font-size: 0.75rem;
-  color: var(--muted-foreground);
-}
-
-/* Stats */
-.stats {
-  padding: 5rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-}
-
-@media (min-width: 640px) {
-  .stats {
-    flex-direction: row;
-    justify-content: center;
-    gap: 4rem;
-  }
-}
-
-.stat-item {
-  text-align: center;
-}
-
-.stat-value {
-  font-size: 2.5rem;
-  font-weight: 300;
-  margin-bottom: 0.25rem;
-}
-
-.stat-label {
-  font-size: 0.875rem;
-  color: var(--muted-foreground);
-}
-
-/* Detailed Skills Section */
-.skills-detailed {
-  padding: 5rem 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-}
-
-@media (min-width: 768px) {
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .skills-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.skill-category {
-  height: 100%;
-}
-
-.skill-category h3 {
-  font-size: 1.25rem;
-  font-weight: 500;
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.skill-category h3 i {
-  color: var(--primary);
-  font-size: 1.125rem;
-}
-
-.skill-badge-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.skill-badge {
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  color: var(--foreground);
-  padding: 0.5rem 1rem;
-  border-radius: 99px;
-  font-size: 0.875rem;
-  font-weight: 400;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(4px);
-}
-
-.skill-badge:hover {
-  background: rgba(59, 130, 246, 0.2);
-  border-color: var(--primary);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
-}
-
-.divider {
-  width: 100%;
-  max-width: 800px;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--border), transparent);
-  margin: 2rem 0;
-}
-
-/* Footer */
-footer {
-  padding: 3rem 1.5rem;
-  border-top: 1px solid var(--border);
-  text-align: center;
-  font-size: 0.875rem;
-  color: var(--muted-foreground);
-}
-
-footer a {
-  color: #25d366;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-
-/* Animations */
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-.float-animation {
-  animation: float 5s ease-in-out infinite;
-}
-
-.hide {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.reveal {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Mobile Specific Refinements */
-@media (max-width: 640px) {
-  .hero {
-    padding: 4rem 1rem;
-  }
-
-  .projects {
-    padding: 3rem 1rem;
-  }
-
-  .section-title {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .glass-card {
-    padding: 1.25rem;
-  }
-
-  .stats {
-    padding: 3rem 1rem;
-    gap: 1.5rem;
-  }
-
-  .stat-value {
-    font-size: 2rem;
-  }
-}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srikannan J | Software Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body class="geist-font">
+
+    <div id="aurora-container"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-wrapper">
+                <div class="logo-box">SJ</div>
+                <span class="logo-name">Srikannan J</span>
+            </div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#education">Education</a>
+            </div>
+            <a href="Srikannan.J_ReSuMe.pdf" download class="glass-button"
+                style="padding: 0.5rem 1rem; min-width: auto;">Resume</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="about" class="hero">
+            <div class="hero-content float-animation">
+                <h1>
+                    Creative Developer &<br>
+                    <span class="gradient-text">Full-Stack Engineer</span>
+                </h1>
+                <p>I craft scalable, maintainable web applications with a focus on clean code and robust backend logic.
+                    Specialist in Java, Spring Boot, and modern web technologies.</p>
+                <div class="btn-group">
+                    <a href="#projects" class="primary-button">View My Work</a>
+                    <a href="#contact" class="glass-button">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider mx-auto" style="margin: 0 auto;"></div>
+
+        <section id="projects" class="projects">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1: EduConnect -->
+                <div class="glass-card">
+                    <div class="card-icon"><i class="fas fa-graduation-cap text-green-400"></i></div>
+                    <h3>EduConnect Learning Platform</h3>
+                    <p>Full-stack educational platform with center listings, booking system, and admin dashboards for
+                        managing courses and real-time notifications.</p>
+                    <div class="tag-group">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">SQLite</span>
+                        <span class="tag">Tailwind</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-card">
+                    <div class="card-icon"><i class="fas fa-spa text-blue-400"></i></div>
+                    <h3>Beauty Parlour Management</h3>
+                    <p>Full-stack system using Java 17, Spring Boot, and JWT for secure appointment scheduling and
+                        service management.</p>
+                    <div class="tag-group">
+                        <span class="tag">Spring Boot</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">JWT</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass-card">
+                    <div class="card-icon"><i class="fas fa-file-invoice text-purple-400"></i></div>
+                    <h3>AI Resume Keyword Matcher</h3>
+                    <p>Modern web app for analyzing resumes vs job descriptions using AI-powered keyword extraction and
+                        glassmorphism UI.</p>
+                    <div class="tag-group">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">PDF.js</span>
+                        <span class="tag">Chart.js</span>
+                    </div>
+                </div>
+
+                <!-- Project 4 (Moved to keep grid balanced) -->
+                <div class="glass-card">
+                    <div class="card-icon"><i class="fas fa-hotel text-cyan-400"></i></div>
+                    <h3>Resort Management System</h3>
+                    <p>Comprehensive system handling room bookings, availability tracking, and automated reporting for
+                        hospitality businesses.</p>
+                    <div class="tag-group">
+                        <span class="tag">Java</span>
+                        <span class="tag">JSP</span>
+                        <span class="tag">MySQL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider mx-auto" style="margin: 0 auto;"></div>
+
+        <section id="skills" class="skills-detailed">
+            <h2 class="section-title">Technical Expertise</h2>
+            <div class="skills-grid">
+                <!-- Programming Languages -->
+                <div class="glass-card skill-category">
+                    <h3><i class="fas fa-code"></i> Languages</h3>
+                    <div class="skill-badge-group">
+                        <span class="skill-badge">Java (Core & OOP)</span>
+                        <span class="skill-badge">Python (Foundation)</span>
+                        <span class="skill-badge">JavaScript (ES6+)</span>
+                        <span class="skill-badge">HTML5 / CSS3</span>
+                    </div>
+                </div>
+
+                <!-- Frameworks & Modules -->
+                <div class="glass-card skill-category">
+                    <h3><i class="fas fa-layer-group"></i> Frameworks</h3>
+                    <div class="skill-badge-group">
+                        <span class="skill-badge">Spring Boot</span>
+                        <span class="skill-badge">Spring MVC</span>
+                        <span class="skill-badge">Spring Data JPA</span>
+                        <span class="skill-badge">Hibernate ORM</span>
+                        <span class="skill-badge">JSP & Servlets</span>
+                        <span class="skill-badge">Bootstrap</span>
+                        <span class="skill-badge">Tailwind CSS</span>
+                    </div>
+                </div>
+
+                <!-- Databases & Tools -->
+                <div class="glass-card skill-category">
+                    <h3><i class="fas fa-database"></i> Infrastructure</h3>
+                    <div class="skill-badge-group">
+                        <span class="skill-badge">MySQL</span>
+                        <span class="skill-badge">PostgreSQL</span>
+                        <span class="skill-badge">SQLite</span>
+                        <span class="skill-badge">REST API Testing</span>
+                        <span class="skill-badge">Postman</span>
+                        <span class="skill-badge">Git / GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider mx-auto" style="margin: 0 auto;"></div>
+
+        <section class="stats">
+            <div class="stat-item">
+                <div class="stat-value">8.0</div>
+                <div class="stat-label">M.Sc. CGPA</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">2023</div>
+                <div class="stat-label">Certified Developer</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">Java</div>
+                <div class="stat-label">Core Expertise</div>
+            </div>
+        </section>
+
+        <div class="divider mx-auto" style="margin: 0 auto;"></div>
+
+        <section id="education" class="projects" style="padding-top: 2rem;">
+            <h2 class="section-title" style="margin-bottom: 2rem;">Education</h2>
+            <div class="projects-grid">
+                <div class="glass-card">
+                    <h3>M.Sc. Computer Science</h3>
+                    <p>Periyar University (2025–2026)</p>
+                    <p style="font-size: 0.8rem;">Focus on advanced programming and software engineering.</p>
+                </div>
+                <div class="glass-card">
+                    <h3>B.Sc. Computer Science</h3>
+                    <p>Bharathiar University (2018–2021)</p>
+                    <p style="font-size: 0.8rem;">Strong foundation in data structures and OOP.</p>
+                </div>
+                <div class="glass-card">
+                    <h3>Full-Stack Certification</h3>
+                    <p>Infi Techzone, Salem (2023)</p>
+                    <p style="font-size: 0.8rem;">Hands-on training in Spring Boot and Hibernate.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <p>© 2026 Srikannan J | <a href="mailto:srikannan9460@gmail.com">srikannan9460@gmail.com</a></p>
+        <a href="https://wa.me/7010217823?text=Hi%20Srikannan,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!"
+            target="_blank">
+            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

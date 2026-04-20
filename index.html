@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srikannan J | Cyberpunk Dev</title>
+    <meta name="description" content="Srikannan J — Full-Stack Developer. Java, Spring Boot, Python, React.js, Django. Cyberpunk Portfolio.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ░░░ CURSOR ░░░ -->
+<div id="cursor-outer"></div>
+<div id="cursor-inner"></div>
+<div id="cursor-trail"></div>
+
+<!-- ░░░ SCANLINES OVERLAY ░░░ -->
+<div class="scanlines"></div>
+<div class="noise"></div>
+<div class="vignette"></div>
+
+<!-- ░░░ BG CANVAS ░░░ -->
+<canvas id="bgCanvas"></canvas>
+
+<!-- ░░░ PAGE TRANSITION WIPE ░░░ -->
+<div id="pageWipe">
+    <div class="wipe-text" id="wipeText">LOADING...</div>
+</div>
+
+<!-- ░░░ SIDEBAR NAV ░░░ -->
+<nav id="sidebar">
+    <div class="sidebar-logo">
+        <span class="bracket">[</span>SJ<span class="bracket">]</span>
+    </div>
+    <div class="sidebar-nav">
+        <button class="nav-btn active" data-page="home" title="Home">
+            <i class="fas fa-home"></i>
+            <span>HOME</span>
+        </button>
+        <button class="nav-btn" data-page="about" title="About">
+            <i class="fas fa-user"></i>
+            <span>ABOUT</span>
+        </button>
+        <button class="nav-btn" data-page="skills" title="Skills">
+            <i class="fas fa-microchip"></i>
+            <span>SKILLS</span>
+        </button>
+        <button class="nav-btn" data-page="projects" title="Projects">
+            <i class="fas fa-code-branch"></i>
+            <span>PROJECTS</span>
+        </button>
+        <button class="nav-btn" data-page="experience" title="Experience">
+            <i class="fas fa-briefcase"></i>
+            <span>XPERIENCE</span>
+        </button>
+        <button class="nav-btn" data-page="contact" title="Contact">
+            <i class="fas fa-satellite-dish"></i>
+            <span>CONTACT</span>
+        </button>
+    </div>
+    <a href="Srikannan.J_ReSuMe.pdf" download class="sidebar-resume">
+        <i class="fas fa-download"></i>
+        <span>RESUME</span>
+    </a>
+</nav>
+
+<!-- ░░░ MOBILE TOP BAR ░░░ -->
+<header id="topbar">
+    <div class="topbar-logo"><span class="bracket">[</span>SJ<span class="bracket">]</span></div>
+    <button id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+</header>
+<div id="mobileMenu">
+    <button class="mob-nav" data-page="home"><i class="fas fa-home"></i> HOME</button>
+    <button class="mob-nav" data-page="about"><i class="fas fa-user"></i> ABOUT</button>
+    <button class="mob-nav" data-page="skills"><i class="fas fa-microchip"></i> SKILLS</button>
+    <button class="mob-nav" data-page="projects"><i class="fas fa-code-branch"></i> PROJECTS</button>
+    <button class="mob-nav" data-page="experience"><i class="fas fa-briefcase"></i> XPERIENCE</button>
+    <button class="mob-nav" data-page="contact"><i class="fas fa-satellite-dish"></i> CONTACT</button>
+</div>
+
+<!-- ░░░░░░░░░░░░░░░░░░░░░░░
+     PAGE CONTAINER
+░░░░░░░░░░░░░░░░░░░░░░░ -->
+<main id="app">
+
+    <!-- ══════════════ PAGE: HOME ══════════════ -->
+    <section class="page active" id="page-home">
+        <div class="home-layout">
+            <div class="home-left">
+                <div class="glitch-wrap">
+                    <span class="home-eyebrow">// FULL-STACK DEVELOPER</span>
+                    <h1 class="home-title glitch-text" data-text="SRIKANNAN J">SRIKANNAN J</h1>
+                    <div class="home-subtitle typewriter" id="typewriter"></div>
+                </div>
+                <p class="home-bio">
+                    Building <span class="accent-y">scalable</span> systems with 
+                    <span class="accent-m">cutting-edge</span> technology. 
+                    Specialized in Full-Stack Java, Python, React.js &amp; Django.
+                    Turning <span class="accent-g">complex problems</span> into elegant solutions.
+                </p>
+                <div class="home-tech-row">
+                    <div class="tech-chip"><i class="fab fa-java"></i> Java</div>
+                    <div class="tech-chip"><i class="fab fa-python"></i> Python</div>
+                    <div class="tech-chip"><i class="fab fa-react"></i> React</div>
+                    <div class="tech-chip active-chip">Django</div>
+                    <div class="tech-chip">Spring Boot</div>
+                </div>
+                <div class="home-actions">
+                    <button class="cp-btn primary" data-page="projects">
+                        <span class="btn-bg"></span>
+                        <i class="fas fa-code"></i> VIEW PROJECTS
+                    </button>
+                    <button class="cp-btn outline" data-page="contact">
+                        <i class="fas fa-satellite-dish"></i> LET'S TALK
+                    </button>
+                </div>
+            </div>
+            <div class="home-right">
+                <div class="avatar-frame" id="avatarFrame">
+                    <div class="af-corner tl"></div>
+                    <div class="af-corner tr"></div>
+                    <div class="af-corner bl"></div>
+                    <div class="af-corner br"></div>
+                    <img src="images/profile.jpeg" alt="Srikannan J" class="avatar-photo" id="avatarPhoto">
+                    <div class="af-scan"></div>
+                    <div class="af-overlay">
+                        <span>SRIKANNAN.J</span>
+                        <span>FULL-STACK DEV</span>
+                    </div>
+                </div>
+                <!-- Stats ring -->
+                <div class="home-stats">
+                    <div class="hs-bar">
+                        <span class="hs-label">PROJECTS</span>
+                        <div class="hs-track"><div class="hs-fill" style="--pct:75%" data-width="75"></div></div>
+                        <span class="hs-val">4+</span>
+                    </div>
+                    <div class="hs-bar">
+                        <span class="hs-label">LANGUAGES</span>
+                        <div class="hs-track"><div class="hs-fill" style="--pct:85%" data-width="85"></div></div>
+                        <span class="hs-val">6+</span>
+                    </div>
+                    <div class="hs-bar">
+                        <span class="hs-label">FRAMEWORKS</span>
+                        <div class="hs-track"><div class="hs-fill" style="--pct:90%" data-width="90"></div></div>
+                        <span class="hs-val">8+</span>
+                    </div>
+                    <div class="hs-bar">
+                        <span class="hs-label">CGPA</span>
+                        <div class="hs-track"><div class="hs-fill" style="--pct:80%" data-width="80"></div></div>
+                        <span class="hs-val">8.0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Floating corner labels -->
+        <div class="corner-label top-left">SYS::PORTFOLIO_v2.6</div>
+        <div class="corner-label top-right">STATUS::ONLINE</div>
+        <div class="corner-label bot-left">NODE::TAMIL_NADU</div>
+        <div class="corner-label bot-right">©2026_SJ</div>
+    </section>
+
+    <!-- ══════════════ PAGE: ABOUT ══════════════ -->
+    <section class="page" id="page-about">
+        <div class="page-header">
+            <span class="ph-tag">//02</span>
+            <h2 class="ph-title">ABOUT<span class="accent-y">_ME</span></h2>
+            <div class="ph-line"></div>
+        </div>
+        <div class="about-layout">
+            <div class="about-left">
+                <div class="about-card">
+                    <div class="ac-corners"></div>
+                    <img src="images/profile.jpeg" alt="Srikannan J" loading="lazy">
+                    <div class="ac-info">
+                        <div class="ac-name">SRIKANNAN J</div>
+                        <div class="ac-role">Full-Stack Developer</div>
+                        <div class="ac-loc"><i class="fas fa-map-marker-alt"></i> Salem, Tamil Nadu</div>
+                        <div class="ac-mail"><i class="fas fa-envelope"></i> srikannan9460@gmail.com</div>
+                        <div class="ac-socials">
+                            <a href="https://github.com" target="_blank" class="ac-social-btn github" title="GitHub">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" class="ac-social-btn linkedin" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i> LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Cert -->
+                <div class="cert-thumb" id="certThumb">
+                    <div class="ct-label"><i class="fas fa-award"></i> CERTIFICATION</div>
+                    <img src="images/certificate-java.jpg" alt="Java Certification">
+                    <div class="ct-overlay">INFI TECHZONE • AUG 2023</div>
+                </div>
+            </div>
+            <div class="about-right">
+                <div class="about-terminal">
+                    <div class="term-bar">
+                        <span class="tb-dot red"></span>
+                        <span class="tb-dot yellow"></span>
+                        <span class="tb-dot green"></span>
+                        <span class="tb-title">srikannan@portfolio:~$</span>
+                    </div>
+                    <div class="term-body">
+                        <p><span class="t-cmd">$ whoami</span></p>
+                        <p class="t-out">Srikannan J — Full-Stack Java Developer &amp; Tech Enthusiast</p>
+                        <p><span class="t-cmd">$ cat mission.txt</span></p>
+                        <p class="t-out">Passionate about building <span class="accent-y">powerful, scalable solutions</span> that tackle real-world problems. Dedicated to writing clean, maintainable code with precision and creativity.</p>
+                        <p><span class="t-cmd">$ cat education.json</span></p>
+                        <p class="t-out t-json">{
+  "MSc": "Periyar University (2025-2026)",
+  "BSc": "Bharathiar University (2018-2021)",
+  "Cert": "Infi Techzone, Salem (2023)"
+}</p>
+                        <p><span class="t-cmd">$ ls interests/</span></p>
+                        <p class="t-out accent-g">problem-solving/  backend-dev/  api-design/  data-analysis/  open-source/</p>
+                        <p class="t-cursor">▋</p>
+                    </div>
+                </div>
+                <!-- Stats grid -->
+                <div class="about-stats">
+                    <div class="ast-card">
+                        <div class="ast-num accent-y" data-count="8" data-suffix=".0">0</div>
+                        <div class="ast-lbl">M.Sc CGPA</div>
+                    </div>
+                    <div class="ast-card">
+                        <div class="ast-num accent-m" data-count="4" data-suffix="+">0</div>
+                        <div class="ast-lbl">Projects</div>
+                    </div>
+                    <div class="ast-card">
+                        <div class="ast-num accent-g" data-count="10" data-suffix="+">0</div>
+                        <div class="ast-lbl">Technologies</div>
+                    </div>
+                    <div class="ast-card">
+                        <div class="ast-num accent-y" data-count="2023" data-suffix="">0</div>
+                        <div class="ast-lbl">Certified</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ PAGE: SKILLS ══════════════ -->
+    <section class="page" id="page-skills">
+        <div class="page-header">
+            <span class="ph-tag">//03</span>
+            <h2 class="ph-title">TECH<span class="accent-m">_STACK</span></h2>
+            <div class="ph-line"></div>
+        </div>
+        <div class="skills-layout">
+            <!-- Skill categories -->
+            <div class="sk-panel" data-cat="all">
+                <div class="sk-filterbar">
+                    <button class="skf active" data-filter="all">ALL</button>
+                    <button class="skf" data-filter="lang">LANGUAGES</button>
+                    <button class="skf" data-filter="web">WEB</button>
+                    <button class="skf" data-filter="framework">FRAMEWORKS</button>
+                    <button class="skf" data-filter="db">DATABASE</button>
+                    <button class="skf" data-filter="tool">TOOLS</button>
+                </div>
+                <div class="sk-grid" id="skillGrid">
+                    <!-- Languages -->
+                    <div class="sk-card" data-cat="lang">
+                        <div class="skc-icon accent-y"><i class="fab fa-java"></i></div>
+                        <div class="skc-name">Java EE</div>
+                        <div class="skc-bar"><div class="skc-fill" data-w="90"></div></div>
+                        <div class="skc-lvl">EXPERT</div>
+                    </div>
+                    <div class="sk-card featured" data-cat="lang">
+                        <div class="skc-icon accent-m"><i class="fab fa-python"></i></div>
+                        <div class="skc-name">Python</div>
+                        <div class="skc-bar"><div class="skc-fill" data-w="78"></div></div>
+                        <div class="skc-lvl">ADVANCED</div>
+                    </div>
+                    <!-- Web -->
+                    <div class="sk-card" data-cat="web">
+                        <div class="skc-icon accent-g"><i class="fab fa-html5"></i></div>
+                        <div class="skc-name">HTML / CSS</div>
+                        <div class="skc-bar"><div class="skc-fill" data-w="88"></div></div>
+                        <div class="skc-lvl">EXPERT</div>
+                    </div>
+                    <div class="sk-card" data-cat="web">
+                        <div class="skc-icon accent-y"><i class="fab fa-js"></i></div>
+                        <div class="skc-name">JavaScript</div>
+                        <div class="skc-bar"><div class="skc-fill" data-w="82"></div></div>
+                        <div class="skc-lvl">ADVANCED</div>
+                    </div>
+                    <div class="sk-card featured" data-cat="web framework">
+                        <div class="skc-icon accent-m"><i class="fab fa-react"></i></div>
+                        <div class="skc-name">React.js</div>
+                        <div class="skc-bar"><div class="skc-fill" data-w="75"></div></div>
+                        <div class="skc-lvl">ADVANCED</div>
+                    </div>
+                    <div class="sk-card" data-cat="web">
+                        <div class="skc-icon accent-g">BS</div>
+                        <div class="skc-name">Bootstrap</div>
+                        <div class="skc-bar"><div class="skc-fill" data-w="80"></div></div>
+                        <div class="skc-lvl">ADVANCED</div>
+                    </div>
+                    <!-- Frameworks -->
+                    <div class="sk-card featured" data-cat="framework">
+                        <div class="skc-icon accent-y">SB</div>
+                        <div class="skc-name">Spring Boot</div>
+                        <div class="skc-bar"><div class="skc-fill" data-w="88"></div></div>
+                        <div class="skc-lvl">EXPERT</div>
+                    </div>
+                    <div class="sk-card" data-cat="framework">
+                        <div class="skc-icon accent-m">MVC</div>
+                        <div class="skc-name">Spring MVC</div>
+                        <div class="skc-bar"><div class="skc-fill" data-w="84"></div></div>
+                        <div class="skc-lvl">EXPERT</div>
+                    </div>
+                    <div class="sk-card" data-cat="framework">
+                        <div class="skc-icon accent-g">H</div>
+                        <div class="skc-name">Hibernate ORM</div>
+                        <div class="skc-bar"><div class="skc-fill" data-w="82"></div></div>
+                        <div class="skc-lvl">ADVANCED</div>
+                    </div>
+                    <div class="sk-card featured" data-cat="framework">
+                        <div class="skc-icon accent-m"><i class="fab fa-python"></i></div>
+                        <div class="skc-name">Django</div>
+                        <div class="skc-bar"><div class="skc-fill" data-w="72"></div></div>
+                        <div class="skc-lvl">INTERMEDIATE</div>
+                    </div>
+                    <div class="sk-card" data-cat="framework">
+                        <div class="skc-icon accent-y">JPA</div>
+                        <div class="skc-name">Spring Data JPA</div>
+                        <div class="skc-bar"><div class="skc-fill" data-w="80"></div></div>
+                        <div class="skc-lvl">ADVANCED</div>
+                    </div>
+                    <!-- DB -->
+                    <div class="sk-card featured" data-cat="db">
+                        <div class="skc-icon accent-y"><i class="fas fa-database"></i></div>
+                        <div class="skc-name">MySQL</div>
+                        <div class="skc-bar"><div class="skc-fill" data-w="87"></div></div>
+                        <div class="skc-lvl">EXPERT</div>
+                    </div>
+                    <div class="sk-card" data-cat="db">
+                        <div class="skc-icon accent-g">PG</div>
+                        <div class="skc-name">PostgreSQL</div>
+                        <div class="skc-bar"><div class="skc-fill" data-w="72"></div></div>
+                        <div class="skc-lvl">INTERMEDIATE</div>
+                    </div>
+                    <!-- Tools -->
+                    <div class="sk-card featured" data-cat="tool">
+                        <div class="skc-icon accent-m"><i class="fab fa-github"></i></div>
+                        <div class="skc-name">Git &amp; GitHub</div>
+                        <div class="skc-bar"><div class="skc-fill" data-w="85"></div></div>
+                        <div class="skc-lvl">ADVANCED</div>
+                    </div>
+                    <div class="sk-card" data-cat="tool">
+                        <div class="skc-icon accent-y">PM</div>
+                        <div class="skc-name">Postman</div>
+                        <div class="skc-bar"><div class="skc-fill" data-w="82"></div></div>
+                        <div class="skc-lvl">ADVANCED</div>
+                    </div>
+                    <div class="sk-card" data-cat="tool">
+                        <div class="skc-icon accent-g"><i class="fab fa-microsoft"></i></div>
+                        <div class="skc-name">VS Code</div>
+                        <div class="skc-bar"><div class="skc-fill" data-w="90"></div></div>
+                        <div class="skc-lvl">EXPERT</div>
+                    </div>
+                    <div class="sk-card" data-cat="tool">
+                        <div class="skc-icon accent-m">MVN</div>
+                        <div class="skc-name">Maven</div>
+                        <div class="skc-bar"><div class="skc-fill" data-w="78"></div></div>
+                        <div class="skc-lvl">ADVANCED</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ PAGE: PROJECTS ══════════════ -->
+    <section class="page" id="page-projects">
+        <div class="page-header">
+            <span class="ph-tag">//04</span>
+            <h2 class="ph-title">PROJ<span class="accent-g">_ECTS</span></h2>
+            <div class="ph-line"></div>
+        </div>
+        <div class="projects-layout">
+            <!-- Project cards - horizontal scrollable on mobile -->
+            <div class="proj-grid">
+
+                <div class="proj-card pc-featured">
+                    <div class="pc-num">01</div>
+                    <div class="pc-glow"></div>
+                    <div class="pc-inner">
+                        <div class="pc-icon" style="color:var(--neon-y)"><i class="fas fa-graduation-cap"></i></div>
+                        <h3 class="pc-title">EduConnect Learning Platform</h3>
+                        <p class="pc-desc">Full-stack educational platform with center listings, booking system, admin dashboards for managing courses and real-time notifications.</p>
+                        <div class="pc-tags">
+                            <span class="ptag y">React</span>
+                            <span class="ptag m">Node.js</span>
+                            <span class="ptag g">SQLite</span>
+                            <span class="ptag y">Tailwind</span>
+                        </div>
+                        <div class="pc-actions">
+                            <a href="#" class="pc-btn"><i class="fas fa-external-link-alt"></i> DEMO</a>
+                            <a href="#" class="pc-btn"><i class="fab fa-github"></i> CODE</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-card">
+                    <div class="pc-num">02</div>
+                    <div class="pc-glow"></div>
+                    <div class="pc-inner">
+                        <div class="pc-icon" style="color:var(--neon-m)"><i class="fas fa-spa"></i></div>
+                        <h3 class="pc-title">Beauty Parlour Management</h3>
+                        <p class="pc-desc">Full-stack system using Java 17, Spring Boot, and JWT for secure appointment scheduling and service management.</p>
+                        <div class="pc-tags">
+                            <span class="ptag y">Spring Boot</span>
+                            <span class="ptag m">PostgreSQL</span>
+                            <span class="ptag g">JWT</span>
+                        </div>
+                        <div class="pc-actions">
+                            <a href="#" class="pc-btn"><i class="fas fa-external-link-alt"></i> DEMO</a>
+                            <a href="#" class="pc-btn"><i class="fab fa-github"></i> CODE</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-card">
+                    <div class="pc-num">03</div>
+                    <div class="pc-glow"></div>
+                    <div class="pc-inner">
+                        <div class="pc-icon" style="color:var(--neon-g)"><i class="fas fa-file-invoice"></i></div>
+                        <h3 class="pc-title">AI Resume Keyword Matcher</h3>
+                        <p class="pc-desc">Modern web app for analyzing resumes vs job descriptions using AI-powered keyword extraction and glassmorphism UI.</p>
+                        <div class="pc-tags">
+                            <span class="ptag y">JavaScript</span>
+                            <span class="ptag m">PDF.js</span>
+                            <span class="ptag g">Chart.js</span>
+                        </div>
+                        <div class="pc-actions">
+                            <a href="#" class="pc-btn"><i class="fas fa-external-link-alt"></i> DEMO</a>
+                            <a href="#" class="pc-btn"><i class="fab fa-github"></i> CODE</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-card">
+                    <div class="pc-num">04</div>
+                    <div class="pc-glow"></div>
+                    <div class="pc-inner">
+                        <div class="pc-icon" style="color:var(--neon-y)"><i class="fas fa-hotel"></i></div>
+                        <h3 class="pc-title">Resort Management System</h3>
+                        <p class="pc-desc">Comprehensive system for room bookings, availability tracking, and automated reporting for hospitality businesses.</p>
+                        <div class="pc-tags">
+                            <span class="ptag y">Java</span>
+                            <span class="ptag m">JSP</span>
+                            <span class="ptag g">MySQL</span>
+                        </div>
+                        <div class="pc-actions">
+                            <a href="#" class="pc-btn"><i class="fas fa-external-link-alt"></i> DEMO</a>
+                            <a href="#" class="pc-btn"><i class="fab fa-github"></i> CODE</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ PAGE: EXPERIENCE ══════════════ -->
+    <section class="page" id="page-experience">
+        <div class="page-header">
+            <span class="ph-tag">//05</span>
+            <h2 class="ph-title">EXPERI<span class="accent-y">_ENCE</span></h2>
+            <div class="ph-line"></div>
+        </div>
+        <div class="exp-layout">
+            <!-- Timeline -->
+            <div class="exp-timeline">
+                <div class="etl-item active">
+                    <div class="etl-dot"></div>
+                    <div class="etl-year">2025</div>
+                    <div class="etl-connector"></div>
+                </div>
+                <div class="etl-line"></div>
+                <div class="etl-item">
+                    <div class="etl-dot dim"></div>
+                    <div class="etl-year dim">2023</div>
+                </div>
+                <div class="etl-line dim"></div>
+                <div class="etl-item">
+                    <div class="etl-dot dim"></div>
+                    <div class="etl-year dim">2021</div>
+                </div>
+            </div>
+            <!-- Cards -->
+            <div class="exp-cards">
+                <div class="exp-card active-card">
+                    <div class="ec-corner tl"></div>
+                    <div class="ec-corner br"></div>
+                    <div class="ec-badge">INTERNSHIP</div>
+                    <div class="ec-header">
+                        <div>
+                            <h3 class="ec-role">Full Stack Web Development Intern</h3>
+                            <p class="ec-company"><i class="fas fa-building"></i> Viswa Digital Technology, Salem</p>
+                        </div>
+                        <div class="ec-period">
+                            <span>MAY 2025</span>
+                            <span class="ep-dash">—</span>
+                            <span>JUN 2025</span>
+                        </div>
+                    </div>
+                    <ul class="ec-bullets">
+                        <li><i class="fas fa-caret-right accent-y"></i> Intensive Python training focused on E-commerce development and data science concepts.</li>
+                        <li><i class="fas fa-caret-right accent-m"></i> Built understanding of company guidelines throughout the full-cycle development process.</li>
+                        <li><i class="fas fa-caret-right accent-g"></i> Incorporated basic data analysis techniques for business insights into development projects.</li>
+                    </ul>
+                    <div class="ec-tags">
+                        <span class="ptag y">Python</span>
+                        <span class="ptag m">Web Dev</span>
+                        <span class="ptag g">Data Analysis</span>
+                        <span class="ptag y">E-Commerce</span>
+                    </div>
+                </div>
+
+                <div class="exp-card">
+                    <div class="ec-corner tl"></div>
+                    <div class="ec-corner br"></div>
+                    <div class="ec-badge">CERTIFICATION</div>
+                    <div class="ec-header">
+                        <div>
+                            <h3 class="ec-role">Full-Stack Java Development</h3>
+                            <p class="ec-company"><i class="fas fa-award"></i> Infi Techzone, Salem</p>
+                        </div>
+                        <div class="ec-period">
+                            <span>AUG 2023</span>
+                        </div>
+                    </div>
+                    <ul class="ec-bullets">
+                        <li><i class="fas fa-caret-right accent-y"></i> Certified Full-Stack Java Developer recognized by INFI TECHZONE.</li>
+                        <li><i class="fas fa-caret-right accent-m"></i> Hands-on training in Spring Boot, Hibernate, and enterprise Java patterns.</li>
+                        <li><i class="fas fa-caret-right accent-g"></i> Project-based learning covering REST APIs, JWT security, and database design.</li>
+                    </ul>
+                    <div class="ec-tags">
+                        <span class="ptag y">Java</span>
+                        <span class="ptag m">Spring Boot</span>
+                        <span class="ptag g">Hibernate</span>
+                        <span class="ptag y">REST API</span>
+                    </div>
+                </div>
+
+                <div class="exp-card">
+                    <div class="ec-corner tl"></div>
+                    <div class="ec-corner br"></div>
+                    <div class="ec-badge">EDUCATION</div>
+                    <div class="ec-header">
+                        <div>
+                            <h3 class="ec-role">M.Sc. Computer Science</h3>
+                            <p class="ec-company"><i class="fas fa-university"></i> Periyar University</p>
+                        </div>
+                        <div class="ec-period">
+                            <span>2025–2026</span>
+                        </div>
+                    </div>
+                    <ul class="ec-bullets">
+                        <li><i class="fas fa-caret-right accent-y"></i> Focus on advanced programming, algorithms, and software engineering.</li>
+                        <li><i class="fas fa-caret-right accent-m"></i> CGPA: 8.0 — consistent academic excellence.</li>
+                    </ul>
+                    <div class="ec-tags">
+                        <span class="ptag y">M.Sc CS</span>
+                        <span class="ptag m">CGPA 8.0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ PAGE: CONTACT ══════════════ -->
+    <section class="page" id="page-contact">
+        <div class="page-header">
+            <span class="ph-tag">//06</span>
+            <h2 class="ph-title">CONT<span class="accent-m">_ACT</span></h2>
+            <div class="ph-line"></div>
+        </div>
+        <div class="contact-layout">
+            <div class="contact-left">
+                <h3 class="cl-heading">INITIATE CONNECTION</h3>
+                <p class="cl-sub">Open to opportunities, collaborations, and interesting conversations. Drop a message below or reach out directly.</p>
+                <div class="contact-links">
+                    <a href="mailto:srikannan9460@gmail.com" class="ct-link y">
+                        <div class="ctl-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <div class="ctl-label">EMAIL</div>
+                            <div class="ctl-val">srikannan9460@gmail.com</div>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/7010217823?text=Hi%20Srikannan!" target="_blank" class="ct-link g">
+                        <div class="ctl-icon"><i class="fab fa-whatsapp"></i></div>
+                        <div>
+                            <div class="ctl-label">WHATSAPP</div>
+                            <div class="ctl-val">+91 70102 17823</div>
+                        </div>
+                    </a>
+                    <a href="https://github.com" target="_blank" class="ct-link m">
+                        <div class="ctl-icon"><i class="fab fa-github"></i></div>
+                        <div>
+                            <div class="ctl-label">GITHUB</div>
+                            <div class="ctl-val">github.com/srikannan</div>
+                        </div>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="ct-link y">
+                        <div class="ctl-icon"><i class="fab fa-linkedin-in"></i></div>
+                        <div>
+                            <div class="ctl-label">LINKEDIN</div>
+                            <div class="ctl-val">linkedin.com/in/srikannan</div>
+                        </div>
+                    </a>
+                    <a href="Srikannan.J_ReSuMe.pdf" download class="ct-link m">
+                        <div class="ctl-icon"><i class="fas fa-file-pdf"></i></div>
+                        <div>
+                            <div class="ctl-label">RESUME</div>
+                            <div class="ctl-val">Download PDF</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="contact-right">
+                <form class="cp-form" id="contactForm">
+                    <div class="cf-field">
+                        <label class="cf-label">NAME_</label>
+                        <input type="text" class="cf-input" placeholder="Your Name" required autocomplete="off">
+                    </div>
+                    <div class="cf-field">
+                        <label class="cf-label">EMAIL_</label>
+                        <input type="email" class="cf-input" placeholder="your@email.com" required autocomplete="off">
+                    </div>
+                    <div class="cf-field">
+                        <label class="cf-label">SUBJECT_</label>
+                        <input type="text" class="cf-input" placeholder="Project Collaboration" autocomplete="off">
+                    </div>
+                    <div class="cf-field">
+                        <label class="cf-label">MESSAGE_</label>
+                        <textarea class="cf-input cf-textarea" placeholder="Let's build something amazing..." rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="cp-btn primary full-w">
+                        <span class="btn-bg"></span>
+                        <i class="fas fa-paper-plane"></i> SEND TRANSMISSION
+                    </button>
+                    <div class="cf-success" id="cfSuccess">
+                        <i class="fas fa-check-circle"></i> MESSAGE SENT SUCCESSFULLY!
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="contact-footer">
+            <span>©2026 SRIKANNAN J</span>
+            <span class="accent-y">•</span>
+            <span>FULL-STACK DEVELOPER</span>
+            <span class="accent-m">•</span>
+            <span>SALEM, TN</span>
+        </div>
+    </section>
+
+</main>
+
+<!-- Lightbox -->
+<div id="lightbox">
+    <div id="lbBackdrop"></div>
+    <div id="lbContent">
+        <button id="lbClose"><i class="fas fa-times"></i></button>
+        <img id="lbImg" src="" alt="Certificate">
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

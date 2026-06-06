@@ -1,25 +1,26 @@
-const mysql = require('mysql2/promise');
+const { Client } = require('pg');
 const fs = require('fs');
 require('dotenv').config();
 
 async function setup() {
     try {
-        // Connect without database selected
-        const connection = await mysql.createConnection({
+        const client = new Client({
             host: process.env.DB_HOST || 'localhost',
             user: process.env.DB_USER || 'root',
             password: process.env.DB_PASSWORD || '',
-            port: process.env.DB_PORT || 3306,
-            multipleStatements: true
+            database: process.env.DB_NAME || 'portfolio_db',
+            port: process.env.DB_PORT || 5432,
+            ssl: process.env.DB_HOST && process.env.DB_HOST.includes('render.com') ? { rejectUnauthorized: false } : false
         });
 
-        console.log("Connected to MySQL. Creating schema...");
+        await client.connect();
+        console.log("Connected to PostgreSQL. Creating schema...");
 
         const schema = fs.readFileSync('schema.sql', 'utf8');
-        await connection.query(schema);
+        await client.query(schema);
 
         console.log("Schema created successfully.");
-        await connection.end();
+        await client.end();
     } catch (err) {
         console.error("Setup failed:", err);
     }

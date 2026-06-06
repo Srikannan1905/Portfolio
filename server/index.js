@@ -44,6 +44,9 @@ const { uploadCloud, deleteMediaByUrl } = require('./cloudinary');
 // ==========================================
 
 // --- Auth Routes ---
+app.get('/', (req, res) => {
+    res.json({ message: 'Portfolio backend is running 🔥' });
+});
 app.post('/api/auth/login', async (req, res) => {
     const { username, password } = req.body;
     try {
@@ -181,7 +184,7 @@ app.delete('/api/projects/:id', authenticateToken, async (req, res) => {
 
 // Update display order in bulk
 app.post('/api/projects/reorder', authenticateToken, async (req, res) => {
-    const { orderedIds } = req.body; 
+    const { orderedIds } = req.body;
     try {
         for (let i = 0; i < orderedIds.length; i++) {
             await Project.findByIdAndUpdate(orderedIds[i], { display_order: i });

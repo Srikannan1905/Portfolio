@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
-const db = require('./db');
+const connectDB = require('./db');
+const { AdminUser } = require('./models');
 
 async function createAdmin() {
     const args = process.argv.slice(2);
@@ -13,19 +14,20 @@ async function createAdmin() {
     const password = args[1];
 
     try {
+        await connectDB();
+        
         // Check if user already exists
-        const [existingUsers] = await db.execute('SELECT id FROM admin_users WHERE username = ?', [username]);
-        if (existingUsers.length > 0) {
+        const existingUser = await AdminUser.findOne({ username });
+        if (existingUser) {
             console.error(`Error: User '${username}' already exists.`);
             process.exit(1);
         }
 
         // Hash the password
-        const saltRounds = 10;
-        const passwordHash = await bcrypt.hash(password, saltRounds);
+        const passwordHash = await bcrypt.hash(password, 10);
 
         // Insert into database
-        await db.execute('INSERT INTO admin_users (username, password_hash) VALUES (?, ?)', [username, passwordHash]);
+        await AdminUser.create({ username, password_hash: passwordHash });
         console.log(`Success: Admin user '${username}' created successfully.`);
         process.exit(0);
     } catch (err) {

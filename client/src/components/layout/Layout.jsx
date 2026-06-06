@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 
 const pageLabels = {
-    home:       'BOOTING...',
-    about:      'LOADING PROFILE...',
-    skills:     'SCANNING TECH...',
-    projects:   'ACCESSING FILES...',
+    home: 'BOOTING...',
+    about: 'LOADING PROFILE...',
+    skills: 'SCANNING TECH...',
+    projects: 'ACCESSING FILES...',
     experience: 'REVIEWING LOGS...',
-    contact:    'OPENING CHANNEL...'
+    contact: 'OPENING CHANNEL...'
 };
 
 function Layout({ activePage, onNavigate, children }) {
@@ -15,10 +15,10 @@ function Layout({ activePage, onNavigate, children }) {
     const [wipeText, setWipeText] = useState('LOADING...');
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [resumeUrl, setResumeUrl] = useState('/Srikannan.J_ReSuMe.pdf');
-
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
     useEffect(() => {
         // Fetch about data just for the resume URL
-        fetch('http://localhost:5000/api/about')
+        fetch(`${API_URL}/about`)
             .then(res => res.json())
             .then(data => {
                 if (data && data.resume_url) {
@@ -60,7 +60,7 @@ function Layout({ activePage, onNavigate, children }) {
                 vx: (Math.random() - 0.5) * 0.3,
                 vy: (Math.random() - 0.5) * 0.3,
                 r: Math.random() * 1.5 + 0.3,
-                color: ['#F5C518','#E8005A','#00C853','#9C27B0'][Math.floor(Math.random() * 4)],
+                color: ['#F5C518', '#E8005A', '#00C853', '#9C27B0'][Math.floor(Math.random() * 4)],
                 life: Math.random()
             }));
         };
@@ -92,7 +92,7 @@ function Layout({ activePage, onNavigate, children }) {
             const orbs = [
                 { x: W * 0.15, y: H * 0.3, r: 280, c: 'rgba(232,0,90,0.05)' },
                 { x: W * 0.82, y: H * 0.55, r: 320, c: 'rgba(245,197,24,0.045)' },
-                { x: W * 0.5,  y: H * 0.85, r: 200, c: 'rgba(0,200,83,0.035)' }
+                { x: W * 0.5, y: H * 0.85, r: 200, c: 'rgba(0,200,83,0.035)' }
             ];
             orbs.forEach(o => {
                 const grd = ctx.createRadialGradient(
@@ -134,10 +134,10 @@ function Layout({ activePage, onNavigate, children }) {
     const cInnerRef = useRef(null);
     const cOuterRef = useRef(null);
     const cTrailRef = useRef(null);
-    
+
     useEffect(() => {
         if (!window.matchMedia('(pointer: fine)').matches) return;
-        
+
         const cInner = cInnerRef.current;
         const cOuter = cOuterRef.current;
         const cTrail = cTrailRef.current;
@@ -153,17 +153,17 @@ function Layout({ activePage, onNavigate, children }) {
 
         const tickCursor = () => {
             cInner.style.left = mx + 'px';
-            cInner.style.top  = my + 'px';
+            cInner.style.top = my + 'px';
 
             ox += (mx - ox) * 0.18;
             oy += (my - oy) * 0.18;
             cOuter.style.left = ox + 'px';
-            cOuter.style.top  = oy + 'px';
+            cOuter.style.top = oy + 'px';
 
             tx += (mx - tx) * 0.06;
             ty += (my - ty) * 0.06;
             cTrail.style.left = tx + 'px';
-            cTrail.style.top  = ty + 'px';
+            cTrail.style.top = ty + 'px';
 
             rafId = requestAnimationFrame(tickCursor);
         };
@@ -172,7 +172,7 @@ function Layout({ activePage, onNavigate, children }) {
         const hoverables = 'a, button, .sk-card, .proj-card, .exp-card, .ct-link, .cf-input, .cert-thumb';
         const onMouseOver = (e) => { if (e.target.closest(hoverables)) document.body.classList.add('cursor-hover'); };
         const onMouseOut = (e) => { if (e.target.closest(hoverables)) document.body.classList.remove('cursor-hover'); };
-        
+
         document.addEventListener('mouseover', onMouseOver);
         document.addEventListener('mouseout', onMouseOut);
 
@@ -203,16 +203,16 @@ function Layout({ activePage, onNavigate, children }) {
             <nav id="sidebar">
                 <div className="sidebar-logo">
                     <a href="/admin" title="Admin Access" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer', display: 'block', transition: 'all 0.2s' }}
-                       onMouseEnter={e => { e.currentTarget.style.textShadow = '0 0 20px var(--neon-y), 0 0 40px var(--neon-y)'; e.currentTarget.style.transform = 'scale(1.08)'; }}
-                       onMouseLeave={e => { e.currentTarget.style.textShadow = ''; e.currentTarget.style.transform = ''; }}>
+                        onMouseEnter={e => { e.currentTarget.style.textShadow = '0 0 20px var(--neon-y), 0 0 40px var(--neon-y)'; e.currentTarget.style.transform = 'scale(1.08)'; }}
+                        onMouseLeave={e => { e.currentTarget.style.textShadow = ''; e.currentTarget.style.transform = ''; }}>
                         <span className="bracket">[</span>SJ<span className="bracket">]</span>
                     </a>
                 </div>
                 <div className="sidebar-nav">
                     {Object.keys(pageLabels).map(page => (
-                        <button 
-                            key={page} 
-                            className={`nav-btn ${activePage === page ? 'active' : ''}`} 
+                        <button
+                            key={page}
+                            className={`nav-btn ${activePage === page ? 'active' : ''}`}
                             onClick={() => handleNav(page)}
                         >
                             <i className={`fas fa-${page === 'home' ? 'home' : page === 'about' ? 'user' : page === 'skills' ? 'microchip' : page === 'projects' ? 'code-branch' : page === 'experience' ? 'briefcase' : 'satellite-dish'}`}></i>
@@ -236,7 +236,7 @@ function Layout({ activePage, onNavigate, children }) {
                     <i className="fas fa-bars"></i>
                 </button>
             </header>
-            
+
             <div id="mobileMenu" className={mobileMenuOpen ? 'open' : ''}>
                 {Object.keys(pageLabels).map(page => (
                     <button key={page} className="mob-nav" onClick={() => handleNav(page)}>
